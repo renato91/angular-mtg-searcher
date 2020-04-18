@@ -1,0 +1,42 @@
+<form class="w-full max-w-sm">
+  <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
+    <input
+      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+      type="text"
+      placeholder="Digite o nome do card"
+      [(ngModel)]="cardName"
+      name="cardName"
+    />
+    <button
+      class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+      type="button"
+      (click)="getCards(cardName)"
+    >
+      Buscar
+    </button>
+  </div>
+</form>
+
+<div class="px-2">
+  <div class="flex flex-wrap -mx-2">
+    <div
+      class="w-1/4 px-2"
+      *ngFor="let item of items.data; let i = index"
+      [attr.data-index]="i"
+    >
+      <div class="max-w-sm rounded shadow-lg mb-4">
+        <img
+          class="w-full overflow-hidden h-160"
+          src="{{ item.image_uris.art_crop }}"
+          alt="{{ item.name }}"
+        />
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ item.name }}</div>
+          <p class="text-gray-700 text-base">
+            Ler mais
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
